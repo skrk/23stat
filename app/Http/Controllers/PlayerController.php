@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\League;
 use App\Models\Player;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PlayerController extends Controller
@@ -51,6 +52,8 @@ class PlayerController extends Controller
         if($request->file('photo')){
             $formFields['photo'] = $request->file('photo')->store('photos', 'public');
         }
+
+        $formFields['slug'] = Str::slug($formFields['name'], '-');
         
         $formFields['user_id'] = auth()->id();
         Player::create($formFields);
@@ -75,11 +78,13 @@ class PlayerController extends Controller
             $formFields['photo'] = $request->file('photo')->store('photos', 'public');
         }
 
+        $formFields['slug'] = Str::slug($formFields['name'], '-');
+
         $formFields['user_id'] = auth()->id();
 
         $player->update($formFields);
 
-        return redirect("/players/$player->id")->with('message', 'Player updated successfully!');
+        return redirect("/players/$player->slug")->with('message', 'Player updated successfully!');
     }
 
     // Delete Player

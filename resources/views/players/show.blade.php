@@ -11,7 +11,7 @@
               <p class="text-muted mb-4">{{$player->team}} | {{$player->league->name}}</p>
               @auth
               <div class="d-flex justify-content-center mb-2">
-                <a href="/players/{{$player->id}}/edit" class="btn btn-primary m-1">Edit</a>
+                <a href="/players/{{$player->slug}}/edit" class="btn btn-primary m-1">Edit</a>
                 <form method="POST" action="/players/{{$player->id}}">
                   @csrf
                   @method('delete')

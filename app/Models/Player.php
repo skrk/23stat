@@ -9,7 +9,7 @@ class Player extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'league_id', 'user_id', 'team', 'birthdate', 'number', 'photo'];
+    protected $fillable = ['name', 'league_id', 'slug', 'user_id', 'team', 'birthdate', 'number', 'photo'];
 
     public function scopeFilter($query, array $filters){
         if($filters['search'] ?? false){

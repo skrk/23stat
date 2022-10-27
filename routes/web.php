@@ -39,13 +39,13 @@ Route::get('/players', [PlayerController::class, 'index']);
 Route::get('/players/create', [PlayerController::class, 'create'])->middleware('auth');
 
 // Show Players Card
-Route::get('/players/{player}', [PlayerController::class, 'show']);
+Route::get('/players/{player:slug}', [PlayerController::class, 'show']);
 
 // Save Player
 Route::post('/players', [PlayerController::class, 'store'])->middleware('auth');
 
 // Show Player's Edit Form
-Route::get('/players/{player}/edit', [PlayerController::class, 'edit'])->middleware('auth');
+Route::get('/players/{player:slug}/edit', [PlayerController::class, 'edit'])->middleware('auth');
 
 // Update Player's Data
 Route::put('/players/{player}', [PlayerController::class, 'update'])->middleware('auth');
