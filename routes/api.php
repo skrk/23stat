@@ -22,8 +22,7 @@ Route::get('/post', function() {
     return response()->json([
         'posts' =>[
             [
-                'title' => 'Post One'
-
+                'title' => 'Post One',
             ]
       ]
     ]);
